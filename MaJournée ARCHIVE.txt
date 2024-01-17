@@ -1,0 +1,222 @@
+import { StatusBar } from 'expo-status-bar';
+import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, ScrollView} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ConfirmDialog } from 'react-native-simple-dialogs';
+import { Keyboard } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+
+
+
+export default function MaJournée() {
+
+  const [cinq, setcinq] = useState([]) 
+  const [six, setsix] = useState([]) 
+  const [sept, setsept] = useState([]) 
+  const [huit, sethuit] = useState([]) 
+  const [neuf, setneuf] = useState([]) 
+  const [dix, setdix] = useState([]) 
+  const [onze, setonze] = useState([]) 
+  const [douze, setdouze] = useState([]) 
+  const [treize, settreize] = useState([]) 
+  const [quatorze, setquatorze] = useState([]) 
+  const [quinze, setquinze] = useState([]) 
+  const [seize, setseize] = useState([]) 
+  const [dix_sept, setdix_sept] = useState([]) 
+  const [dix_huit, setdix_huit] = useState([])
+  const [dix_neuf, setdix_neuf] = useState([]) 
+  const [vingt, setvingt] = useState([]) 
+  const [vingt_et_un, setvingt_et_unq] = useState([]) 
+  const [vingt_deux, setvingt_deux] = useState([]) 
+  const [vingt_trois, setvingt_trois] = useState([]) 
+  const [minuit, setminuit] = useState([]) 
+
+
+
+  const renderItem = ({item}) => {
+
+
+    return(
+      <View></View>
+    )
+  }
+
+
+    return(
+        <View style={styles.style_de_la_scrollviewPrinc}>  
+        <ScrollView>
+          <View style={styles.view_princ_de_la_ScrollView}>     
+            <View style={styles.style_des_heures}>              
+              <View style={{  height: verticalScale(56), alignItems: 'center', justifyContent: 'flex-end'}}> 
+                <Text>6:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>7:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>8:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>9:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>10:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>11:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>12:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>13:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>14:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>15:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>16:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>17:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>18:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>19:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>20:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>21:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>22:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>23:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>00:00</Text>
+              </View>
+              <View style={styles.style_dune_heure}> 
+                <Text>01:00</Text>
+              </View>
+
+            </View>
+            <View style={styles.style_des_plages}>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={cinq} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={six} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={sept} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={huit} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={neuf} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={dix} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={onze} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={douze} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={treize} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={quatorze} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={quinze} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={seize} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={dix_sept} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={dix_huit} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+               <FlatList scrollEnabled={false} data={dix_neuf} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={vingt} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={vingt_et_un} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={vingt_deux} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={vingt_trois} renderItem={renderItem}/>
+              </View>
+              <View style={styles.style_dune_view_horaire}>
+                <FlatList scrollEnabled={false} data={minuit} renderItem={renderItem}/>
+              </View>
+            </View>
+          </View>    
+          </ScrollView> 
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+  principal: {
+    flex: 1,
+    alignItems: 'stretch'
+  },
+
+  style_de_la_scrollviewPrinc : {
+    flex: 1
+  },
+
+  view_princ_de_la_ScrollView:{
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'stretch',
+  },
+
+  style_des_plages:{
+    flex: 9,
+    borderLeftWidth: 1,
+  },
+
+  style_des_heures : {
+
+   flex: 1
+  },
+
+  style_dune_heure: {
+  height: verticalScale(50),
+  alignItems: 'center',
+  justifyContent: 'flex-end'
+  },
+
+  style_dune_view_horaire:{
+    height: verticalScale(50),
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    borderBottomWidth: 0.6
+  }
+});
+

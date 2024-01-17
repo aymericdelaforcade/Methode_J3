@@ -1,0 +1,136 @@
+import React from 'react';
+import 'react-native-gesture-handler';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import Calendrier from './screens/Calendrier';
+import Menu from './screens/Menu'
+
+const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
+
+function Menu_Calendrier ({navigation}) {
+  return(
+      <Tab.Navigator>
+        <Tab.Screen name="Menu" component={Menu} options={{headerStyle:{ backgroundColor: '#007499'}, headerTitleAlign:'center'}}/>
+        <Tab.Screen name="Calendrier" component={Calendrier} />
+      </Tab.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Menu / Calendrier" component={Menu_Calendrier} />
+        <Drawer.Screen name="Matières"/>
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+
+  const [nombreJajd, setnombreJajd] = useState(0)
+
+  useEffect(() => {
+    setnombreJajd(0)
+    const ajd =  moment(new Date()).format("DD-MM-YYYY")
+    for (var id in stockage_des_J) {
+      if (stockage_des_J.hasOwnProperty(id)) {
+        var dates = stockage_des_J[id].jour_séléctionné;
+        var dates_decalees = stockage_des_J[id].date_reportée
+        if (dates.includes(ajd) && !dates.indexOf(ajd) == 0) {
+          setnombreJajd(nombreJajd + 1)
+        }
+        setnombreJajd(nombreJajd + dates_decalees.length)
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    setnombreJajd(0)
+    const ajd =  moment(new Date()).format("DD-MM-YYYY")
+    for (var id in stockage_des_J) {
+      if (stockage_des_J.hasOwnProperty(id)) {
+        var dates = stockage_des_J[id].jour_séléctionné;
+        var dates_decalees = stockage_des_J[id].date_reportée
+        if (dates.includes(ajd) && !dates.indexOf(ajd) == 0) {
+          setnombreJajd(nombreJajd + 1)
+        }
+        setnombreJajd(nombreJajd + dates_decalees.length)
+      }
+    }
+  }, [stockage_des_J]);
+
+
+
+export default function Calendrier() {  
+
+  useEffect(() => { //Hook which is fired on the initial render
+
+    setday_1(moment(new Date()).format("DD/MM/YYYY"));
+
+    setday_2(moment(moment(new Date()).add(1, 'days')).format("DD/MM/YYYY"));
+
+  }, []);
+
+  useEffect(() => { // Problem is here, this Hook is ONLY call when day_1 and day_2 are changed by the first useEffect
+    
+   console.log('is called ?')
+   
+  }, [day_1, day_2]);
+
+  function decrease_day () {
+    setday_1(moment(diminution_day_1_pour_calculs).format("DD/MM/YYYY")) //this never trigered the second useEffect(), but day_1 is really changed
+
+    setday_2( moment(diminution_day_2_pour_calculs).format("DD/MM/YYYY"))
+  }
+
+
+  const [day_1, setday_1] = useState('') 
+  const [day_2, setday_2] = useState('') 
+
+  return (
+        <View style={styles.principal}>             
+              <TouchableOpacity style={styles.icon_day_1} onPress={decrease_day}/>
+              <View style={styles.text_day_1}>
+                <Text >{day_1}</Text>
+              </View>
+            <View style={styles.day_2}>
+              <View style={styles.text_day_2}>
+                <Text >{day_2}</Text>
+              </View>
+            </View>
+        </View>
+  );
+}
+
+
+
+
+
+CODE D ACTUALISATION DE STOCKAGE DES J QUI FONCTIONNE AVEC BEUG DUPLICATION
+
+
+  useEffect(() => {  // appellé à chaque fois que stokage_des_J va changer dans le store 
+
+    for (var id in stockage_des_J) {
+      if (stockage_des_J.hasOwnProperty(id)) {
+        var dates = stockage_des_J[id].jour_séléctionné;
+        if (dates.includes(jour_1)) {
+          if ((box_1_id_a_afficher.includes(id)) == false){
+            console.log(box_1_id_a_afficher)
+            setbox_1_id_a_afficher(oldArray => [...oldArray, {id2 : id, decalage: ''}] );
+          }
+        }
+
+        if (dates.includes(jour_2)) {
+          if ((box_2_id_a_afficher.includes(id)) == false){
+            setbox_2_id_a_afficher(oldArray => [...oldArray, id] );
+          }
+        }
+      }
+    }
+  }, [stockage_des_J]);
