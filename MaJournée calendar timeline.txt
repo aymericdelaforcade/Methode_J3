@@ -1,0 +1,59 @@
+import { StatusBar } from 'expo-status-bar';
+import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList, ScrollView} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ConfirmDialog } from 'react-native-simple-dialogs';
+import { Keyboard } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import Timetable from "react-native-calendar-timetable";
+import moment from "moment";
+
+
+
+export default function MaJournée() {
+
+
+  const [items, setitems] = useState([
+    {
+        title: 'Some event',
+        startDate: moment().subtract(1, 'hour').toDate(),
+        endDate: moment().add(1, 'hour').toDate(),
+    },
+  ]) 
+
+
+  const renderItem = ({item}) => { 
+
+    return(
+        <View></View>
+    )
+  }
+
+
+
+    return(
+      <ScrollView>
+        <Timetable
+            // these two are required
+            items={items}
+            renderItem={renderItem}
+            key={items.title}
+
+            // provide only one of these
+            date={new Date()}
+        />
+    </ScrollView>
+    )
+}
+
+const styles = StyleSheet.create({
+  principal: {
+    flex: 1,
+    alignItems: 'stretch'
+  },
+
+});
+

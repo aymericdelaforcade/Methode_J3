@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Méthode des J",
+    "description": "Methode des J",
+    "slug": "methode-des-j",
+    "version": "1.1.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1341be"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.john4445.methode_J_2",
+      "versionCode": 4
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d4926a91-da31-46f6-8ef5-7a51750d81d4"
+      }
+    },
+    "plugins": [],
+    "owner": "eragon4445"
+  }
+}

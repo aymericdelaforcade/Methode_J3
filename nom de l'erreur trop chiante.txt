@@ -1,0 +1,63 @@
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE could not resolve
+npm ERR!
+npm ERR! While resolving: @howljs/calendar-kit@1.13.2
+npm ERR! Found: react-native-reanimated@3.3.0
+npm ERR! node_modules/react-native-reanimated
+npm ERR!   peer react-native-reanimated@">= 1.0.0" from @react-navigation/drawer@6.6.3
+npm ERR!   node_modules/@react-navigation/drawer
+npm ERR!     @react-navigation/drawer@"^6.6.3" from the root project
+npm ERR!   react-native-reanimated@"^3.3.0" from the root project
+npm ERR!
+npm ERR! Could not resolve dependency:
+npm ERR! peer react-native-reanimated@"^2.4.1" from @howljs/calendar-kit@1.13.2
+npm ERR! node_modules/@howljs/calendar-kit
+npm ERR!   @howljs/calendar-kit@"^1.13.2" from the root project
+npm ERR!
+npm ERR! Conflicting peer dependency: react-native-reanimated@2.17.0
+npm ERR! node_modules/react-native-reanimated
+npm ERR!   peer react-native-reanimated@"^2.4.1" from @howljs/calendar-kit@1.13.2
+npm ERR!   node_modules/@howljs/calendar-kit
+npm ERR!     @howljs/calendar-kit@"^1.13.2" from the root project
+npm ERR!
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR!
+npm ERR!
+npm ERR! For a full report see:
+npm ERR! C:\Users\aymer\AppData\Local\npm-cache\_logs\2023-09-14T11_50_08_603Z-eresolve-report.txt
+
+npm ERR! A complete log of this run can be found in: C:\Users\aymer\AppData\Local\npm-cache\_logs\2023-09-14T11_50_08_603Z-debug-0.log
+
+
+
+Etat de expo:
+
+ Failed to upgrade JavaScript devDependencies: @babel/core@^7.20.0
+× Failed to upgrade JavaScript dependencies: expo-status-bar@~1.6.0 react@18.2.0 react-native@0.72.3 @react-native-async-storage/async-storage@1.18.2 @react-native-community/datetimepicker@7.2.0 react-native-gesture-handler@~2.12.0 react-native-reanimated@~3.3.0 react-native-safe-area-context@4.6.3 react-native-screens@~3.22.0 @shopify/flash-list@1.4.3
+√ Updated known packages to compatible versions.
+√ Removed package-lock.json and deleted node_modules.
+× Running npm install failed. Please check npm-error.log for more information.
+× Failed to clear packager cache with error: Can't read JSON file: C:\Users\aymer\OneDrive\Documents\Codage\methode_J_2\node_modules\expo\package.json
+├─ File: C:\Users\aymer\OneDrive\Documents\Codage\methode_J_2\node_modules\expo\package.json
+└─ Cause: Error: ENOENT: no such file or directory, open 'C:\Users\aymer\OneDrive\Documents\Codage\methode_J_2\node_modules\expo\package.json'
+√ Cleared packager cache.
+√ Validated project
+
+👏 Automated upgrade steps complete.
+...but this doesn't mean everything is done yet!
+
+✅ The following packages were updated:
+expo-status-bar, react, react-native, @react-native-async-storage/async-storage, @react-native-community/datetimepicker, react-native-gesture-handler, react-native-reanimated, react-native-safe-area-context, react-native-screens, @shopify/flash-list, @babel/core, expo
+
+🚨 The following packages were not updated. You should check the READMEs for those repositories to determine what version is compatible with your new set of packages:
+@howljs/calendar-kit, @react-native-community/masked-view, @react-navigation/bottom-tabs, @react-navigation/drawer, @react-navigation/native, @react-navigation/native-stack, @react-navigation/stack, @reduxjs/toolkit, date-fns, dayjs, entypo, express, material-icons, moment, npm, package_name, react-native-calendar-timetable, react-native-calendars, react-native-element-dropdown, react-native-flash-message, react-native-modal-datetime-picker, react-native-paper, react-native-radio-buttons-group, react-native-select-dropdown, react-native-simple-dialogs, react-native-size-matters, react-native-swipe-gestures, react-native-vector-icons, react-redux, redux, redux-persist, redux-thunk, metro-config, mockdate, nodemon
+
+Please refer to the release notes for information on any further required steps to update and information about breaking changes:
+https://blog.expo.dev/expo-sdk-49-c6d398cdf740
+
+
+
+
+VERSION DE NODE ABAISSEE
