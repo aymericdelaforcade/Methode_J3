@@ -12,12 +12,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { StatusBar } from 'expo-status-bar';
 
+import Purchases, { LOG_LEVEL } from 'react-native-purchases';
+
 
 
 
 
 import { StockageSlice } from '../redux/reducers/reducStockageJ';
 import { useSelector, useDispatch } from 'react-redux';
+import { PremiumSlice } from '../redux/reducers/reducPremium';
 
 
 
@@ -27,6 +30,7 @@ export default function Menu({navigation}) {
   const [image, setimage] = useState(require('../assets/indestructible1.png'))
   const stockage_des_J_externe = useSelector((state) => state.stockage_des_J.stockage_des_J)
   const indestructible = useSelector((state) => state.indestructible.indestructible)
+  const [Packages, setPackages] = useState('')
 
   const CouleurFond = useSelector((state) => state.Test.CouleurFond)
   const CouleurBouton = useSelector((state) => state.Test.CouleurBouton)
@@ -35,6 +39,30 @@ export default function Menu({navigation}) {
   const DarkMode =  useSelector((state) => state.Test.Dark)
   const CouleurActive = useSelector((state) => state.Test.CouleurActive)
 
+  useEffect(() => {
+    const loadOfferings = async () => {
+      try {
+        const offerings = await Purchases.getOfferings();
+        const currentOffering = offerings.current;
+        console.log(JSON.stringify(currentOffering.availablePackages[0].product, null, 2) + 'offer');
+
+        setPackages(currentOffering.availablePackages[0].product)
+      } catch (error) {
+        console.error('Erreur lors du chargement des offres: ', error.message);
+      }
+    };
+
+    loadOfferings()
+  }, []);
+  
+  const handlePurchase = async (identifier) => {
+    try {
+      const {customerInfo, productIdentifier} = await Purchases.purchaseStoreProduct(identifier);
+      dispatch(PremiumSlice.actions.activerPremium());
+    } catch (error) {
+      console.log("Error lors de l'achat:", error.message);
+    }
+  };
 
   useEffect(() => {
     setnombreJajd(0)
@@ -309,7 +337,16 @@ export default function Menu({navigation}) {
                 Ajouter un J
               </Text>
             </TouchableOpacity>
-            <View style={{flex : 5.6, backgroundColor: CouleurFond}}></View>
+            <TouchableOpacity 
+              style={[styles.la_methode_des_J_comment_ça_marche_touchable, {marginTop: '4%', backgroundColor: DarkMode ? CouleurActive :  CouleurBouton2}]} 
+              onPress={() => handlePurchase(Packages)}
+              >
+             <Ionicons name="add" color={'black'} size={25} style={{marginRight: '4%'}}/>
+              <Text style={{fontSize: 19, color: 'black'}}>
+                Acheter version Premium
+              </Text>
+            </TouchableOpacity>
+            <View style={{flex : 5.3, backgroundColor: CouleurFond}}></View>
           </View>
           <ConfirmDialog
             dialogStyle = {{borderRadius : 10, backgroundColor: CouleurActive}}
@@ -520,11 +557,9 @@ const styles = StyleSheet.create({
   },
   la_methode_des_J_comment_ça_marche_text:{
     fontSize: 19,
-    fontFamily: 'PoppinsBlack',
   },
   nombre_de_J_à_faire_ajd_txt:{
     fontSize: 30,
-    fontFamily: 'PoppinsBlack'
   },
   view_princ_pour_add_j_fait:{
     alignSelf: 'stretch',

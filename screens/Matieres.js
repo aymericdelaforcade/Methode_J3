@@ -74,7 +74,7 @@ export default function Matieres() {
           <View style={{flex : 5}}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               {matiere.length == 0 && <Text style={{fontSize: 19}}>
-                Acune matière ajoutées
+                Aucune matière ajoutées
               </Text>}
             </View>
             <FlatList data={matiere} renderItem={renderItem}/>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
@@ -49,7 +49,8 @@ import { persistor } from './redux/store';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Paramètres from './screens/Paramètres';
 import * as SplashScreen from 'expo-splash-screen';
-/*import { adapty } from 'react-native-adapty';*/
+//import { adapty } from 'react-native-adapty';
+import Purchases, { LOG_LEVEL } from 'react-native-purchases';
 
 
 
@@ -132,6 +133,32 @@ const  App = ({navigation}) => {
 
 function Counter({navigation}) {
 
+  
+useEffect(() => {
+  const init = async () => {
+    try {
+      Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
+      await Purchases.configure({ apiKey: 'goog_wuaMVpWzcktYmlGPBiZZErOfeli' });
+      await loadOfferings();
+    } catch (error) {
+      console.error('Erreur lors de l’initialisation de Purchases: ', error);
+    }
+  };
+
+  init();
+
+}, []);
+
+const loadOfferings = async () => {
+  try {
+    const offerings = await Purchases.getOfferings();
+    const currentOffering = offerings.current;
+  } catch (error) {
+    console.error('Erreur lors du chargement des offres: ', error.userInfo);
+  }
+};
+
+
   const dispatch = useDispatch();
 
 
@@ -152,7 +179,7 @@ function Counter({navigation}) {
       });
   
       // Mettre en pause l'exécution pendant 2 secondes
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 1200));
   
       setFontsLoaded(true);
       await SplashScreen.hideAsync();
@@ -164,14 +191,14 @@ function Counter({navigation}) {
 
   }, []);
 
-  //StatusBar.setBackgroundColor(CouleurFond); 
-  
   useEffect(() => {
 
     setDefaultProps(Text, { style: [{ fontFamily: 'PoppinsBlack', color: '#D6D6D6'}], });
 
   }, []);
 
+  //StatusBar.setBackgroundColor(CouleurFond); 
+  
   if (!fontsLoaded) {
     return null;
   }
@@ -181,11 +208,12 @@ function Counter({navigation}) {
     <View style={{flex:1}}>
       <NavigationContainer>
           <Drawer.Navigator 
-            screenOptions={({ navigation }) => ({
+            screenOptions={{
               drawerActiveBackgroundColor: CouleurActive, 
               drawerActiveTintColor: '#424242', 
               drawerInactiveTintColor: CouleurText,
-            })}  
+              headerTintColor: CouleurText
+            }}  
             drawerContent={props => <CustomDrawer {...props}/>}
             >
               <Drawer.Screen 

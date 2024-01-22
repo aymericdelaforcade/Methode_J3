@@ -2,7 +2,7 @@
   "expo": {
     "name": "Méthode des J",
     "description": "Methode des J",
-    "slug": "methode-des-j",
+    "slug": "methode-j3",
     "version": "1.1.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -31,10 +31,10 @@
     },
     "extra": {
       "eas": {
-        "projectId": "d4926a91-da31-46f6-8ef5-7a51750d81d4"
+        "projectId": "03a6626b-46b6-40e4-a41a-d4573504effb"
       }
     },
     "plugins": [],
-    "owner": "eragon4445"
+    "owner": "john4445"
   }
 }

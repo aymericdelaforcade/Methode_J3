@@ -9,6 +9,7 @@ import { IndestructibleSlice } from './reducers/reducMrIndestructible';
 import { informationaAfficherSlice } from './reducers/reducpourInforaAfficher';
 import { CouleuraAfficherSlice } from './reducers/reducCouleuraAfficher';
 import { DarkModeSlice } from './reducers/reducDarkMode';
+import { PremiumSlice } from './reducers/reducPremium';
 
 const rootReducer = combineReducers({
   matiere: counterSlice.reducer,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   informationaAfficher: informationaAfficherSlice.reducer,
   CouleuraAfficher: CouleuraAfficherSlice.reducer,
   Test: DarkModeSlice.reducer, 
+  Premium: PremiumSlice.reducer
 });
 
 export default rootReducer;
